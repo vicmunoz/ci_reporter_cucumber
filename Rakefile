@@ -9,8 +9,7 @@ namespace :generate do
 
   task :cucumber do
     cucumber = "#{Gem.loaded_specs['cucumber'].gem_dir}/bin/cucumber"
-    # run_ruby_acceptance "-rci/reporter/rake/cucumber_loader -S #{cucumber} --format CI::Reporter::Cucumber acceptance/cucumber"
-    run_ruby_acceptance "-rci/reporter/rake/cucumber_loader -S #{cucumber} --format CI::Reporter::Cucumber"
+    run_ruby_acceptance "-rci/reporter/rake/cucumber_loader -S #{cucumber} --format CI::Reporter::Cucumber -r acceptance/cucumber/step_definitions/development_steps.rb acceptance/cucumber"
   end
 
   task :all => [:clean, :cucumber]
